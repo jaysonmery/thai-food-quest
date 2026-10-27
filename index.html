@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thai Food Quest – Grade 10 Vocabulary Game</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Noto+Sans+Thai:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff3d6;--bg2:#ffe0e6;--card:#ffffff;--ink:#2b1810;--mut:#6f5a4c;--line:#f0d9b5;--ok:#17a05d;--bad:#e03e45;--c1:#e8531f;--c2:#12998c;--c3:#7d3cb0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1410;--bg2:#2a1620;--card:#2d211a;--ink:#fff1e0;--mut:#cdb8a6;--line:#4d3b2e}}
+:root[data-theme="dark"]{--bg:#1d1410;--bg2:#2a1620;--card:#2d211a;--ink:#fff1e0;--mut:#cdb8a6;--line:#4d3b2e}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:"Fredoka","Segoe UI",system-ui,sans-serif;color:var(--ink);background:linear-gradient(160deg,var(--bg),var(--bg2));font-size:18px}
+.th{font-family:"Noto Sans Thai","Leelawadee UI","Tahoma",sans-serif}
+#app{max-width:880px;margin:0 auto;padding:16px}
+h1{font-size:clamp(2rem,6vw,3.2rem);margin:.2em 0;line-height:1.05}
+h2{font-size:clamp(1.25rem,3.6vw,1.7rem);line-height:1.3;margin:.6em 0}
+.sub{color:var(--mut);margin:0 0 14px}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.bar b{background:var(--card);border:2px solid var(--line);border-radius:99px;padding:4px 14px}
+.teams{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:12px}
+.tm{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:8px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.tm span{flex:1 1 100%;font-weight:600}.tm b{font-size:1.4rem;flex:1}
+button{font:inherit;cursor:pointer;color:inherit}
+button:focus-visible{outline:3px solid #3b82f6;outline-offset:2px}
+.sm{border:2px solid var(--line);background:var(--card);border-radius:99px;padding:3px 12px;font-size:.9rem}
+.ms{display:grid;gap:12px;margin:14px 0}
+.mc{display:flex;gap:14px;align-items:center;text-align:left;width:100%;border:0;border-radius:22px;padding:16px 18px;color:#fff;background:var(--c);box-shadow:0 6px 0 rgba(0,0,0,.22)}
+.mc:active{transform:translateY(3px);box-shadow:0 3px 0 rgba(0,0,0,.22)}
+.mc .ic{font-size:2.6rem}.mc b{display:block;font-size:1.3rem}.mc small{font-size:.95rem;opacity:.95}.mc .stars{margin-left:auto;font-size:1.3rem}
+.card{background:var(--card);border:3px solid var(--c,var(--line));border-radius:24px;padding:16px 18px}
+.mh{display:flex;justify-content:space-between;gap:8px;font-weight:700;color:var(--c)}
+.mh span{color:var(--mut)}
+.prog{height:10px;background:var(--line);border-radius:9px;overflow:hidden;margin:8px 0}
+.prog i{display:block;height:100%;background:var(--c);transition:width .3s}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.opt{border:3px solid var(--line);background:var(--card);border-radius:18px;padding:14px;font-size:1.15rem;font-weight:600;text-align:left}
+.opt:not(:disabled):hover{border-color:var(--c)}
+.opt.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt.dim{opacity:.5}
+.fb{margin-top:14px;border-radius:18px;padding:12px 14px;border:3px solid}
+.fb.g{border-color:var(--ok)}.fb.r{border-color:var(--bad)}
+.vc{background:var(--bg);border-radius:12px;padding:10px 12px;margin:8px 0;line-height:1.6}
+.vc .th{color:var(--c);font-size:1.15rem}
+.go{border:0;border-radius:99px;background:var(--c);color:#fff;font-weight:700;padding:10px 22px;font-size:1.05rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0;align-items:center}
+.end{text-align:center}.end .big{font-size:3.4rem;margin:6px 0}
+.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.wg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-top:10px}
+.w{background:var(--card);border-left:8px solid var(--c);border-radius:14px;padding:10px 12px;display:grid;gap:2px}
+.w em{color:var(--mut)}
+details{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:8px 14px;margin-top:12px;font-size:.95rem}
+summary{cursor:pointer;font-weight:700}
+.cf{position:fixed;bottom:-3rem;font-size:2rem;animation:up 1.9s ease-out forwards;pointer-events:none;z-index:9}
+@keyframes up{to{transform:translateY(-115vh) rotate(40deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){.cf{display:none}.prog i{transition:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+// [question, correct answer, [3 wrong answers], word, Thai script, pronunciation, fun fact]
+const MS=[
+{n:"Street Food Safari",ic:"🍜",c:"var(--c1)",g:"Read the clue and pick the dish.",q:[
+["A stir-fried rice noodle dish with egg, peanuts and tamarind sauce.","Pad Thai",["Khao Soi","Larb","Massaman Curry"],"Pad Thai","ผัดไทย","pad TIE","Thailand’s most famous noodle dish."],
+["A hot and sour soup with shrimp, lemongrass and chilli.","Tom Yum Goong",["Tom Kha Gai","Som Tam","Moo Ping"],"Tom Yum Goong","ต้มยำกุ้ง","tom yam GOONG","“Goong” means shrimp."],
+["A spicy salad made by pounding green papaya, chilli and lime in a mortar.","Som Tam",["Pad Thai","Khao Pad","Satay"],"Som Tam","ส้มตำ","som TAM","Popular all over Thailand, especially in Isan."],
+["A sweet dessert of ripe mango with coconut sticky rice.","Mango Sticky Rice",["Green Curry","Larb","Khao Soi"],"Mango Sticky Rice","ข้าวเหนียวมะม่วง","khao NIAO ma-MUANG","Best in the hot season, when mangoes are ripe."],
+["A northern curry noodle soup topped with crispy noodles.","Khao Soi",["Tom Yum Goong","Moo Ping","Som Tam"],"Khao Soi","ข้าวซอย","khao SOY","A speciality of Chiang Mai."],
+["Grilled pork skewers sold at street stalls, often with sticky rice.","Moo Ping",["Pad Thai","Tom Kha Gai","Khao Pad"],"Moo Ping","หมูปิ้ง","moo PING","A favourite breakfast on the go."]]},
+{n:"Spelling Spotlight",ic:"✏️",c:"var(--c2)",g:"Find the correct English spelling.",q:[
+["Which spelling is correct? (ตะไคร้, a herb in Tom Yum)","lemongrass",["lemmongras","lemongrasse","lemon-grss"],"lemongrass","ตะไคร้","LEM-un-grass","One word, two m’s? No – just one!"],
+["Which spelling is correct? (ข่า, a root like ginger)","galangal",["galangle","gallangal","galanggal"],"galangal","ข่า","guh-LANG-gul","Used in Tom Kha Gai."],
+["Which spelling is correct? (มะพร้าว, used in curries and desserts)","coconut",["cocunut","coconutt","cokonut"],"coconut","มะพร้าว","KOH-kuh-nut","Coconut milk makes curries creamy."],
+["Which spelling is correct? (มะขาม, sour fruit in Pad Thai sauce)","tamarind",["tamerind","tamarin","tammarind"],"tamarind","มะขาม","TAM-uh-rind","Gives Pad Thai its sour-sweet taste."],
+["Which spelling is correct? (มังสวิรัติ, no meat)","vegetarian",["vegitarian","vegeterian","vegatarian"],"vegetarian","มังสวิรัติ","vej-uh-TAIR-ee-un","Many Thai dishes can be made “jay” (เจ)."],
+["Which spelling is correct? (อร่อย, tastes great!)","delicious",["delicous","delishous","delicius"],"delicious","อร่อย","dih-LISH-us","Say “aroi” in Thai, “delicious” in English."]]},
+{n:"Taste & Say",ic:"🗣️",c:"var(--c3)",g:"Pronunciation and flavour words.",q:[
+["How do we say “galangal” in English?","guh-LANG-gul",["GAL-an-gal","gal-AN-jel","guh-lan-GAL"],"galangal","ข่า","guh-LANG-gul","Stress the middle syllable."],
+["How do we say “Pad Thai” in English?","pad TIE",["pad THAY","pad TEE","pad TOO"],"Pad Thai","ผัดไทย","pad TIE","“Th” in Thai sounds like T. So Thai = “tie”."],
+["How do we say “Tom Yum Goong”?","tom yam GOONG",["tom YOOM gong","tome yum GUNG","tom yum GOING"],"Tom Yum Goong","ต้มยำกุ้ง","tom yam GOONG","“Goong” rhymes with “moon”."],
+["Mango sticky rice tastes ___ and creamy.","sweet",["sour","salty","bitter"],"sweet","หวาน","sweet","Thai flavour: หวาน (waan)."],
+["Fish sauce (nam pla) gives food a ___ taste.","salty",["sweet","bitter","creamy"],"salty","เค็ม","SAWL-tee","Thai flavour: เค็ม (khem)."],
+["Som Tam is very ___ because of the chilli.","spicy",["creamy","sweet","plain"],"spicy","เผ็ด","SPY-see","Thai flavour: เผ็ด (phet)."]]}];
+
+const TN=["🌶️ Chilli","🍋 Lime","🥥 Coconut","🥭 Mango","🌿 Basil"];
+let S={v:"home",m:0,i:0,sc:0,st:0,ok:0,pick:null,aw:false,opts:[],team:false,T:[0,0,0,0,0],stars:[0,0,0]};
+const $=id=>document.getElementById(id);
+const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function say(t){try{speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.8;speechSynthesis.speak(u)}catch(e){}}
+function cf(){const e=["🍜","🌶️","🥭","🍋","🥥","⭐","🎉"];for(let i=0;i<14;i++){let s=document.createElement("span");s.className="cf";s.textContent=e[i%7];s.style.left=Math.random()*95+"vw";s.style.animationDelay=Math.random()*.4+"s";document.body.appendChild(s);setTimeout(()=>s.remove(),2400)}}
+function bar(){return `<div class="bar"><b>⭐ ${S.sc}</b><b>🔥 ${S.st}</b><button class="sm" onclick="tt()">👥 Team mode: ${S.team?"ON":"OFF"}</button></div>`+(S.team?`<div class="teams">${TN.map((n,i)=>`<div class="tm"><span>${n}</span><b>${S.T[i]}</b><button class="sm" aria-label="Minus 5" onclick="pt(${i},-5)">−5</button><button class="sm" onclick="pt(${i},10)">+10</button></div>`).join("")}</div>`:"")}
+function tt(){S.team=!S.team;draw()}
+function pt(i,d){S.T[i]=Math.max(0,S.T[i]+d);draw()}
+function aw(i){S.T[i]+=10;S.aw=true;draw()}
+function start(m){S.m=m;S.i=0;S.ok=0;S.st=0;S.pick=null;S.aw=false;S.v="play";S.opts=sh([MS[m].q[0][1],...MS[m].q[0][2]]);draw();scrollTo(0,0)}
+function pick(k){if(S.pick!==null)return;const q=MS[S.m].q[S.i];S.pick=S.opts[k];if(S.pick===q[1]){S.ok++;S.st++;S.sc+=10+Math.min(S.st-1,5)*2;cf()}else S.st=0;draw()}
+function nx(){const m=MS[S.m];S.i++;S.pick=null;S.aw=false;if(S.i>=m.q.length){S.v="end";const s=S.ok>=5?3:S.ok>=4?2:S.ok>=2?1:0;S.stars[S.m]=Math.max(S.stars[S.m],s);if(s>=2)cf()}else{const q=m.q[S.i];S.opts=sh([q[1],...q[2]])}draw();scrollTo(0,0)}
+function go(v){S.v=v;draw();scrollTo(0,0)}
+function home(){return bar()+`<h1>🇹🇭 Thai Food Quest</h1><p class="sub">Grade 10 vocabulary game · Traditional food of Thailand · 3 missions</p>
+<div class="ms">${MS.map((m,i)=>`<button class="mc" style="--c:${m.c}" onclick="start(${i})"><span class="ic">${m.ic}</span><span><b>Mission ${i+1}: ${m.n}</b><small>${m.g} · ${m.q.length} questions</small></span><span class="stars">${S.stars[i]?"⭐".repeat(S.stars[i]):"▶"}</span></button>`).join("")}</div>
+<div class="row" style="justify-content:flex-start"><button class="sm" onclick="go('bank')">📖 Word bank</button></div>
+<details><summary>Teacher tips for 25 students</summary><p>Make 5 teams of 5 and turn on Team mode. Show the screen. Teams discuss for 15 seconds, then one captain answers. Tap the winning team to award +10 points. Use the 🔊 button to model each pronunciation, then ask the class to repeat.</p></details>
+<details><summary>CRAFT behind this game</summary><p><b>Context:</b> Grade 10 English class learning Thai food vocabulary. <b>Role:</b> educational game designer. <b>Action:</b> 3 multiple-choice missions with spelling and pronunciation. <b>Format:</b> colourful 18-question game with a word bank. <b>Tone:</b> fun, encouraging, teen-friendly.</p></details>`}
+function play(){const m=MS[S.m],q=m.q[S.i],done=S.pick!==null,right=S.pick===q[1];
+return bar()+`<div class="card" style="--c:${m.c}"><div class="mh"><span style="color:var(--c)">${m.ic} Mission ${S.m+1}: ${m.n}</span><span>${S.i+1}/${m.q.length}</span></div><div class="prog"><i style="width:${S.i/m.q.length*100}%"></i></div>
+<h2>${q[0]}</h2><div class="opts">${S.opts.map((o,k)=>`<button class="opt ${done?(o===q[1]?"ok":o===S.pick?"bad":"dim"):""}" ${done?"disabled":""} onclick="pick(${k})">${"ABCD"[k]}. ${o}</button>`).join("")}</div>
+${done?`<div class="fb ${right?"g":"r"}"><b>${right?"🎉 Correct! Great job!":"Not quite. The answer is: "+q[1]}</b>
+<div class="vc"><b>${q[3]}</b> &nbsp;<span class="th">${q[4]}</span><br>🗣️ /${q[5]}/ <button class="sm" data-w="${q[3]}" onclick="say(this.dataset.w)">🔊 Listen</button><br><small>${q[6]}</small></div>
+${S.team&&!S.aw?`<div class="chips">Award +10 to: ${TN.map((n,i)=>`<button class="sm" onclick="aw(${i})">${n}</button>`).join("")}</div>`:""}
+<button class="go" onclick="nx()">${S.i+1<m.q.length?"Next question ➜":"See my result 🏁"}</button></div>`:""}</div>`}
+function end(){const m=MS[S.m],s=S.stars[S.m],t=m.q.length,msg=S.ok>=5?"Superstar chef! 🏆":S.ok>=3?"Tasty work! Keep practising.":"Good try! Check the word bank and play again.";
+return bar()+`<div class="card end" style="--c:${m.c}"><div class="big">${"⭐".repeat(Math.max(1,S.ok>=5?3:S.ok>=4?2:1))}</div><h2>Mission ${S.m+1} complete: ${S.ok}/${t} correct</h2><p>${msg}</p>
+<div class="row">${S.m<2?`<button class="go" onclick="start(${S.m+1})">Mission ${S.m+2} ➜</button>`:""}<button class="go" onclick="start(${S.m})">🔁 Play again</button><button class="sm" onclick="go('bank')">📖 Word bank</button><button class="sm" onclick="go('home')">🏠 Home</button></div></div>`}
+function bank(){const seen={};let h="";MS.forEach(m=>m.q.forEach(q=>{if(seen[q[3]])return;seen[q[3]]=1;h+=`<div class="w" style="--c:${m.c}"><b>${q[3]}</b><span class="th">${q[4]}</span><em>/${q[5]}/</em><button class="sm" style="justify-self:start" data-w="${q[3]}" onclick="say(this.dataset.w)">🔊 Listen</button></div>`}));
+return bar()+`<h1>📖 Word bank</h1><p class="sub">Spelling · Thai · pronunciation. Study first, then play!</p><div class="row" style="justify-content:flex-start"><button class="sm" onclick="go('home')">🏠 Home</button></div><div class="wg">${h}</div>`}
+function draw(){$("app").innerHTML=({home,play,end,bank})[S.v]()}
+draw();
+</script>
+</body>
+</html>
